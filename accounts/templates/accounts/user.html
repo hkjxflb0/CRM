@@ -1,0 +1,44 @@
+{% extends  'accounts/main.html'%}
+
+{% block content%}
+
+{% include 'accounts/status.html'%}
+<style type="text/css">
+	.row{
+		text-align: left;
+	}
+	.btn{
+		margin: 0.2rem;
+	}
+</style>
+<br>
+<div class="row">
+	<div class="col-md">
+		<div class="card card-body">
+			<table class="table table-sm">
+				<tr>
+					<th>
+						Product
+					</th>
+					<th>Note</th>
+					<th>DATE of Order</th>
+					<th>Status</th>
+					<th>Update</th>
+					
+				</tr>
+				{% for order in orders%}
+					<tr>
+						<td>{{order.product}}</td>
+						<td>{{order.note}}</td>
+						<td>{{order.date}}</td>
+						<td>{{order.status}}</td>
+						   <td><a  class="btn btn-success btn-sm btn-block" href="{% url 'update' order.id%}">Update</a></td>
+                    
+					</tr>
+				{% endfor %}
+			</table>
+			
+		</div>
+	</div>
+</div>
+{% endblock %}
